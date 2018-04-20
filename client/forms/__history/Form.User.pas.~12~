@@ -1,0 +1,152 @@
+unit Form.User;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Data.DB,
+  FireDAC.Stan.StorageJSON, FireDAC.Stan.StorageBin, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
+  Data.FireDACJSONReflect, Datasnap.DSClientRest;
+
+type
+  TfrmUser = class(TForm)
+    pgcUser: TPageControl;
+    tsConsulta: TTabSheet;
+    tsCadastro: TTabSheet;
+    btnNew: TButton;
+    grdUser: TDBGrid;
+    fdMemTableUser: TFDMemTable;
+    dsUser: TDataSource;
+    sslBin: TFDStanStorageBinLink;
+    sslJson: TFDStanStorageJSONLink;
+    intgrfldMemTableUserID: TIntegerField;
+    wdstrngfldMemTableUserLOGIN: TWideStringField;
+    wdstrngfldMemTableUserSENHA: TWideStringField;
+    lbl1: TLabel;
+    edtId: TDBEdit;
+    lbl2: TLabel;
+    edtLogin: TDBEdit;
+    lbl3: TLabel;
+    edtSenha: TDBEdit;
+  private
+    { Private declarations }
+    procedure initialize(AEnabled: Boolean; AFocusIndex, AActivedIndex: Integer);
+
+    procedure GetAllUser;
+    procedure ApplyUpdate;
+    function DeleteUser(AId: Integer): Boolean;
+    function GetDeltas: TFDJSONDeltas;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmUser: TfrmUser;
+
+implementation
+
+uses ClientModule, System.Generics.Collections, System.JSON;
+
+{$R *.dfm}
+
+procedure HandleRESTException(const AConnection: TDSRestConnection; const APrefix: string; const E: TDSRestProtocolException);
+var
+  LJSONValue: TJSONValue;
+  LMessage: string;
+  LPair: TJSONPair;
+begin
+  // Padronizando mensagem de erro no caso de exceção do servidor
+
+  LJSONValue := TJSONObject.ParseJSONValue(BytesOf(E.ResponseText), 0);
+  try
+    LMessage :=  E.ResponseText;
+
+    if LJSONValue is TJSONObject then
+    begin
+      LPair := TJSONObject(LJSONValue).Get(0);
+      if LPair.JsonString.Value = 'SessionExpired' then
+      begin
+          AConnection.SessionID := '';
+      end;
+
+      LMessage := LPair.JSONValue.Value;
+    end
+  finally
+    LJSONValue.Free;
+  end;
+
+  ShowMessageFmt('%s: %s', [APrefix, LMessage]);
+end;
+
+{ TfrmUser }
+
+procedure TfrmUser.ApplyUpdate;
+var
+  LDeltaList: TFDJSONDeltas;
+begin
+  LDeltaList := GetDeltas;
+  try
+    ClientModule.smRestConnection.smUserClient.ApplyChangesUser(LDeltaList);
+    GetAllUser;
+  except
+    on E: TDSRestProtocolException do
+      HandleRestException(ClientModule.smRestConnection.DSRestConnection1, 'Apply Updates error', E)
+    else
+      raise;
+  end;
+end;
+
+function TfrmUser.DeleteUser(AId: Integer): Boolean;
+begin
+  try
+    ClientModule.smRestConnection.smUserClient.DeleteUser(AId);
+    Result := True;
+  except
+    on E: TDSRestProtocolException do
+      HandleRestException(ClientModule.smRestConnection.DSRestConnection1, 'Delete error', E)
+    else
+      Result := False;
+  end
+end;
+
+procedure TfrmUser.GetAllUser;
+var
+  LDataSetList: TFDJSONDataSets;
+begin
+  try
+    LDataSetList := ClientModule.smRestConnection.smUserClient.GetAllUser;
+    fdMemTableUser.Active := False;
+    Assert(TFDJSONDataSetsReader.GetListCount(LDataSetList) = 1);
+    fdMemTableUser.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));
+    fdMemTableUser.Active := True;
+  except
+    on E: TDSRestProtocolException do
+      HandleRestException(ClientModule.smRestConnection.DSRestConnection1, 'Get User error', E)
+    else
+      raise;
+  end;
+end;
+
+function TfrmUser.GetDeltas: TFDJSONDeltas;
+begin
+  if fdMemTableUser.State in dsEditModes then
+  begin
+    fdMemTableUser.Post;
+  end;
+  Result := TFDJSONDeltas.Create;
+  TFDJSONDeltasWriter.ListAdd(Result, 'user', fdMemTableUser);
+end;
+
+procedure TfrmUser.initialize(AEnabled: Boolean; AFocusIndex,
+  AActivedIndex: Integer);
+begin
+  pgcUser.Pages[AFocusIndex].Enabled := AEnabled;
+  pgcUser.Pages[AFocusIndex].Visible := AEnabled;
+
+  pgcUser.ActivePageIndex := AActivedIndex;
+end;
+
+end.

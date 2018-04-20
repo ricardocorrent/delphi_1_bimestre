@@ -1,0 +1,34 @@
+unit ServerMethodsBacen;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Datasnap.DSProviderDataModuleAdapter,
+  DB.Connection, Data.FireDACJSONReflect, FireDAC.Stan.StorageJSON,
+  FireDAC.Stan.StorageBin;
+
+type
+  TsmBacen = class(TDSServerModule)
+    fdQueryAllBacen: TFDQuery;
+    fdQueryBacen: TFDQuery;
+    fdQueryDeleteBacen: TFDQuery;
+    sslBin: TFDStanStorageBinLink;
+    sslJson: TFDStanStorageJSONLink;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.
+

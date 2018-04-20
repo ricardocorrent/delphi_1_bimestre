@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/04/17 19:54:24.000.451,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\FormUnit1.pas</Transaction>
+    <Transaction>2018/04/17 19:54:25.000.505,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2018/04/17 19:54:25.000.869,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\WebModuleUnit1.pas</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.706,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\CallbackFramework-min.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.819,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\templates\ServerFunctionInvoker.html</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.588,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\base64-min.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.617,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\json2-min.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.538,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\ServerFunctions.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.777,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\css\main.css</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.722,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\connection.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.802,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\templates\ReverseString.html</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.424,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\json2.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.298,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\ServerFunctionExecutor.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.671,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\ServerFunctionExecutor-min.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.253,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\base64.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.789,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\css\ServerFunctionInvoker.css</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.850,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\images\expand.png</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.473,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\CallbackFramework.js</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.836,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\images\collapse.png</Transaction>
+    <Transaction>2018/04/17 19:54:26.000.763,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\js\ServerFunctionInvoker.js</Transaction>
+    <Transaction>2018/04/17 19:55:11.000.739,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\FormUnit1.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\Form.Server.pas</Transaction>
+    <Transaction>2018/04/17 19:55:11.000.739,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\FormUnit1.dfm=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\Form.Server.dfm</Transaction>
+    <Transaction>2018/04/17 19:55:44.000.325,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\ServerMethodsUnit1.dfm=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsString.dfm</Transaction>
+    <Transaction>2018/04/17 19:55:44.000.325,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\ServerMethodsUnit1.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsString.pas</Transaction>
+    <Transaction>2018/04/17 19:56:21.000.844,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\WebModuleUnit1.dfm=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\WebModule.dfm</Transaction>
+    <Transaction>2018/04/17 19:56:21.000.844,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\WebModuleUnit1.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\WebModule.pas</Transaction>
+    <Transaction>2018/04/17 19:59:23.000.775,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\Unit1.pas</Transaction>
+    <Transaction>2018/04/17 19:59:47.000.879,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\Unit1.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsUser.pas</Transaction>
+    <Transaction>2018/04/17 19:59:47.000.879,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\Unit1.dfm=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsUser.dfm</Transaction>
+    <Transaction>2018/04/17 20:02:53.000.164,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\Unit1.pas</Transaction>
+    <Transaction>2018/04/17 20:03:22.000.501,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\Unit1.dfm=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\DB.Connection.dfm</Transaction>
+    <Transaction>2018/04/17 20:03:22.000.501,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\Unit1.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\server\DB.Connection.pas</Transaction>
+    <Transaction>2018/04/18 13:27:18.000.248,=E:\Trabalho 1 bimestre\AppRest\server\Unit1.pas</Transaction>
+    <Transaction>2018/04/18 13:27:56.000.538,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsTecnico.dfm=E:\Trabalho 1 bimestre\AppRest\server\Unit1.dfm</Transaction>
+    <Transaction>2018/04/18 13:27:56.000.538,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsTecnico.pas=E:\Trabalho 1 bimestre\AppRest\server\Unit1.pas</Transaction>
+    <Transaction>2018/04/18 15:36:29.000.156,=E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsMarca.pas</Transaction>
+    <Transaction>2018/04/20 11:03:18.820,=E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsServico.pas</Transaction>
+    <Transaction>2018/04/20 13:30:44.549,=E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsBacen.pas</Transaction>
+    <Transaction>2018/04/20 14:21:47.536,=E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsFormaPagamento.pas</Transaction>
+  </Transactions>
+</BorlandProject>

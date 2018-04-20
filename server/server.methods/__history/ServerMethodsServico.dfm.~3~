@@ -1,0 +1,5 @@
+object smServico: TsmServico
+  OldCreateOrder = False
+  Height = 179
+  Width = 218
+end

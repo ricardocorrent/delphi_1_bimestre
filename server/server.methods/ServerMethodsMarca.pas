@@ -1,0 +1,71 @@
+unit ServerMethodsMarca;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth, Datasnap.DSProviderDataModuleAdapter,
+  DB.Connection, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Stan.StorageJSON,
+  FireDAC.Stan.StorageBin, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Data.FireDACJSONReflect;
+
+type
+  TsmMarca = class(TDSServerModule)
+    fdQueryAllMarca: TFDQuery;
+    fdQueryMarca: TFDQuery;
+    fdQueryDeleteMarca: TFDQuery;
+    sslBin: TFDStanStorageBinLink;
+    sslJson: TFDStanStorageJSONLink;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function GetAllMarca: TFDJSONDataSets;
+    procedure ApplyChangesMarca(const ADeltaList: TFDJSONDeltas);
+    procedure DeleteMarca(AId: Integer);
+  end;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TsmMarca }
+
+procedure TsmMarca.ApplyChangesMarca(const ADeltaList: TFDJSONDeltas);
+var
+LApply: IFDJSONDeltasApplyUpdates;
+begin
+  LApply := TFDJSONDeltasApplyUpdates.Create(ADeltaList);
+  LApply.ApplyUpdates('marca', fdQueryMarca.Command);
+  if LApply.Errors.Count > 0 then
+  begin
+    raise Exception.Create(LApply.Errors.Strings.Text);
+  end;
+  fdQueryMarca.Active := True;
+  fdQueryMarca.CommitUpdates;
+  fdQueryMarca.Refresh;
+end;
+
+procedure TsmMarca.DeleteMarca(AId: Integer);
+begin
+  try
+    fdQueryDeleteMarca.Active := False;
+    fdQueryDeleteMarca.ParamByName('ID').AsInteger := AId;
+    fdQueryDeleteMarca.ExecSQL;
+  except
+    raise Exception.Create('Falha ao excluir marca');
+  end;
+end;
+
+function TsmMarca.GetAllMarca: TFDJSONDataSets;
+begin
+  fdQueryAllMarca.Active := False;
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, fdQueryAllMarca);
+end;
+
+end.
+

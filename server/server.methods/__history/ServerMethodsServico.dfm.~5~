@@ -1,0 +1,28 @@
+object smServico: TsmServico
+  OldCreateOrder = False
+  Height = 221
+  Width = 227
+  object fdQueryAllServico: TFDQuery
+    CachedUpdates = True
+    Left = 40
+    Top = 16
+  end
+  object fdQueryServico: TFDQuery
+    CachedUpdates = True
+    Left = 40
+    Top = 64
+  end
+  object fdQueryDeleteServico: TFDQuery
+    CachedUpdates = True
+    Left = 40
+    Top = 112
+  end
+  object sslBin: TFDStanStorageBinLink
+    Left = 144
+    Top = 16
+  end
+  object sslJson: TFDStanStorageJSONLink
+    Left = 176
+    Top = 16
+  end
+end

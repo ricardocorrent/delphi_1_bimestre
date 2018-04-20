@@ -1,0 +1,176 @@
+object frmUser: TfrmUser
+  Left = 0
+  Top = 0
+  Caption = 'Usu'#225'rio'
+  ClientHeight = 274
+  ClientWidth = 509
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pgcUser: TPageControl
+    Left = 0
+    Top = 0
+    Width = 509
+    Height = 274
+    ActivePage = tsCadastro
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 643
+    object tsConsulta: TTabSheet
+      Caption = 'Consulta'
+      ExplicitWidth = 635
+      object btnNew: TButton
+        Left = 419
+        Top = 33
+        Width = 75
+        Height = 41
+        Caption = 'Novo'
+        TabOrder = 0
+        OnClick = btnNewClick
+      end
+      object grdUser: TDBGrid
+        Left = 0
+        Top = 80
+        Width = 501
+        Height = 166
+        Align = alBottom
+        DataSource = dsUser
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = grdUserDblClick
+      end
+    end
+    object tsCadastro: TTabSheet
+      Caption = 'Cadastro'
+      ImageIndex = 1
+      ExplicitWidth = 635
+      object lbl1: TLabel
+        Left = 8
+        Top = 8
+        Width = 11
+        Height = 13
+        Caption = 'ID'
+        FocusControl = edtId
+      end
+      object lbl2: TLabel
+        Left = 8
+        Top = 48
+        Width = 31
+        Height = 13
+        Caption = 'LOGIN'
+        FocusControl = edtLogin
+      end
+      object lbl3: TLabel
+        Left = 8
+        Top = 88
+        Width = 33
+        Height = 13
+        Caption = 'SENHA'
+        FocusControl = edtSenha
+      end
+      object edtId: TDBEdit
+        Left = 8
+        Top = 24
+        Width = 134
+        Height = 21
+        DataField = 'ID'
+        DataSource = dsUser
+        Enabled = False
+        TabOrder = 0
+      end
+      object edtLogin: TDBEdit
+        Left = 8
+        Top = 64
+        Width = 264
+        Height = 21
+        DataField = 'LOGIN'
+        DataSource = dsUser
+        TabOrder = 1
+      end
+      object edtSenha: TDBEdit
+        Left = 8
+        Top = 104
+        Width = 134
+        Height = 21
+        DataField = 'SENHA'
+        DataSource = dsUser
+        TabOrder = 2
+      end
+      object btnDelete: TButton
+        Left = 8
+        Top = 184
+        Width = 75
+        Height = 49
+        Caption = 'Excluir'
+        TabOrder = 3
+        OnClick = btnDeleteClick
+      end
+      object btnClean: TButton
+        Left = 104
+        Top = 184
+        Width = 75
+        Height = 49
+        Caption = 'Limpar'
+        TabOrder = 4
+        OnClick = btnCleanClick
+      end
+      object btnSave: TButton
+        Left = 197
+        Top = 184
+        Width = 75
+        Height = 49
+        Caption = 'Salvar'
+        TabOrder = 5
+        OnClick = btnSaveClick
+      end
+    end
+  end
+  object fdMemTableUser: TFDMemTable
+    CachedUpdates = True
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
+    AutoCommitUpdates = False
+    Left = 256
+    Top = 40
+    object intgrfldMemTableUserID: TIntegerField
+      FieldName = 'ID'
+    end
+    object wdstrngfldMemTableUserLOGIN: TWideStringField
+      FieldName = 'LOGIN'
+    end
+    object wdstrngfldMemTableUserSENHA: TWideStringField
+      FieldName = 'SENHA'
+      Size = 10
+    end
+  end
+  object dsUser: TDataSource
+    DataSet = fdMemTableUser
+    Left = 320
+    Top = 40
+  end
+  object sslBin: TFDStanStorageBinLink
+    Left = 352
+    Top = 128
+  end
+  object sslJson: TFDStanStorageJSONLink
+    Left = 392
+    Top = 128
+  end
+end

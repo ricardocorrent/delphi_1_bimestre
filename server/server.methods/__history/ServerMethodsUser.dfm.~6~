@@ -1,0 +1,29 @@
+object smUser: TsmUser
+  OldCreateOrder = False
+  Height = 258
+  Width = 215
+  object fdQueryAllUser: TFDQuery
+    CachedUpdates = True
+    Connection = dmConnection.fdConnection
+    SQL.Strings = (
+      'SELECT * FROM usuario')
+    Left = 32
+    Top = 8
+  end
+  object fdQueryUser: TFDQuery
+    Left = 32
+    Top = 64
+  end
+  object fdQueryDeleteUser: TFDQuery
+    Left = 32
+    Top = 120
+  end
+  object sslBin: TFDStanStorageBinLink
+    Left = 152
+    Top = 24
+  end
+  object sslJson: TFDStanStorageJSONLink
+    Left = 152
+    Top = 72
+  end
+end

@@ -1,0 +1,142 @@
+unit Form.FormaPagamento;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  Vcl.Mask, Vcl.DBCtrls, Data.DB, FireDAC.Stan.StorageJSON,
+  FireDAC.Stan.StorageBin, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Data.FireDACJSONReflect, Datasnap.DSClientRest;
+
+type
+  TfrmFormaPagamento = class(TForm)
+    pgcFormaPagamento: TPageControl;
+    tsConsulta: TTabSheet;
+    tsCadastro: TTabSheet;
+    grdFormaPagamento: TDBGrid;
+    btnNew: TButton;
+    fdMemTableFormaPagamento: TFDMemTable;
+    dsFormaPagamento: TDataSource;
+    sslBin: TFDStanStorageBinLink;
+    sslJson: TFDStanStorageJSONLink;
+    intgrfldMemTableFormaPagamentoID: TIntegerField;
+    wdstrngfldMemTableFormaPagamentoDESCRICAO: TWideStringField;
+    wdstrngfldMemTableFormaPagamentoTIPO: TWideStringField;
+    intgrfldMemTableFormaPagamentoEXIBIR_VENDA: TIntegerField;
+    intgrfldMemTableFormaPagamentoEXIBIR_BAIXA: TIntegerField;
+    intgrfldMemTableFormaPagamentoACEITA_TROCO: TIntegerField;
+    lbl1: TLabel;
+    edtId: TDBEdit;
+    lbl2: TLabel;
+    edtDescricao: TDBEdit;
+    lbl3: TLabel;
+    edtTipo: TDBEdit;
+    lbl4: TLabel;
+    edtExibirVenda: TDBEdit;
+    lbl5: TLabel;
+    edtExibirBaixa: TDBEdit;
+    lbl6: TLabel;
+    edtAceitaTroco: TDBEdit;
+    btnDelete: TButton;
+    btnClean: TButton;
+    btnSave: TButton;
+    procedure btnCleanClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure initialize(AEnabled: Boolean; AFocusIndex, AActivedIndex: Integer);
+
+    procedure GetAllFormaPagamento;
+    procedure ApplyUpdate;
+    function DeleteFormaPagamento(AId: Integer): Boolean;
+    function GetDeltas: TFDJSONDeltas;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmFormaPagamento: TfrmFormaPagamento;
+
+implementation
+
+uses ClientModule, System.Generics.Collections, System.JSON;
+
+{$R *.dfm}
+
+procedure HandleRESTException(const AConnection: TDSRestConnection; const APrefix: string; const E: TDSRestProtocolException);
+var
+  LJSONValue: TJSONValue;
+  LMessage: string;
+  LPair: TJSONPair;
+begin
+  // Padronizando mensagem de erro no caso de exceção do servidor
+
+  LJSONValue := TJSONObject.ParseJSONValue(BytesOf(E.ResponseText), 0);
+  try
+    LMessage :=  E.ResponseText;
+
+    if LJSONValue is TJSONObject then
+    begin
+      LPair := TJSONObject(LJSONValue).Get(0);
+      if LPair.JsonString.Value = 'SessionExpired' then
+      begin
+          AConnection.SessionID := '';
+      end;
+
+      LMessage := LPair.JSONValue.Value;
+    end
+  finally
+    LJSONValue.Free;
+  end;
+
+  ShowMessageFmt('%s: %s', [APrefix, LMessage]);
+end;
+
+{ TfrmFormaPagamento }
+
+procedure TfrmFormaPagamento.ApplyUpdate;
+var
+  LDeltaList: TFDJSONDeltas;
+begin
+  LDeltaList := GetDeltas;
+  try
+    ClientModule.smRestConnection.smFormaPagamentoClient.ApplyChangesFormaPagamento(LDeltaList);
+    GetAllFormaPagamento
+  except
+    on E: TDSRestProtocolException do
+      HandleRestException(ClientModule.smRestConnection.DSRestConnection1, 'Apply Updates error', E)
+    else
+      raise;
+  end;
+end;
+
+procedure TfrmFormaPagamento.btnCleanClick(Sender: TObject);
+begin
+  edtDescricao.SetFocus;
+
+end;
+
+function TfrmFormaPagamento.DeleteFormaPagamento(AId: Integer): Boolean;
+begin
+
+end;
+
+procedure TfrmFormaPagamento.GetAllFormaPagamento;
+begin
+
+end;
+
+function TfrmFormaPagamento.GetDeltas: TFDJSONDeltas;
+begin
+
+end;
+
+procedure TfrmFormaPagamento.initialize(AEnabled: Boolean; AFocusIndex,
+  AActivedIndex: Integer);
+begin
+
+end;
+
+end.

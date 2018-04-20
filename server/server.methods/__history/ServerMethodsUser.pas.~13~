@@ -1,0 +1,72 @@
+unit ServerMethodsUser;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth, Datasnap.DSProviderDataModuleAdapter,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Stan.StorageJSON,
+  FireDAC.Stan.StorageBin, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  DB.Connection, Data.FireDACJSONReflect;
+
+type
+  TsmUser = class(TDSServerModule)
+    fdQueryAllUser: TFDQuery;
+    fdQueryUser: TFDQuery;
+    fdQueryDeleteUser: TFDQuery;
+    sslBin: TFDStanStorageBinLink;
+    sslJson: TFDStanStorageJSONLink;
+    fdQueryAccessUser: TFDQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function GetAllUser: TFDJSONDataSets;
+    procedure ApplyChangesUser(const ADeltaList: TFDJSONDeltas);
+    procedure DeleteUser(AId: Integer);
+  end;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TsmUser }
+
+procedure TsmUser.ApplyChangesUser(const ADeltaList: TFDJSONDeltas);
+var
+LApply: IFDJSONDeltasApplyUpdates;
+begin
+  LApply := TFDJSONDeltasApplyUpdates.Create(ADeltaList);
+  LApply.ApplyUpdates('usuario', fdQueryUser.Command);
+  if LApply.Errors.Count > 0 then
+  begin
+    raise Exception.Create(LApply.Errors.Strings.Text);
+  end;
+  fdQueryUser.Active := True;
+  fdQueryUser.CommitUpdates;
+  fdQueryUser.Refresh;
+end;
+
+procedure TsmUser.DeleteUser(AId: Integer);
+begin
+  try
+  fdQueryDeleteUser.Active := False;
+  fdQueryDeleteUser.ParamByName('ID').AsInteger := AId;
+  fdQueryDeleteUser.ExecSQL;
+except
+    raise Exception.Create('Falha ao excluir usuário');
+end;
+end;
+
+function TsmUser.GetAllUser: TFDJSONDataSets;
+begin
+  fdQueryAllUser.Active := False;
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, fdQueryAllUser);
+end;
+
+end.
+

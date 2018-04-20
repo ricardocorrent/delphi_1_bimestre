@@ -1,0 +1,27 @@
+object smMarca: TsmMarca
+  OldCreateOrder = False
+  Height = 297
+  Width = 261
+  object fdQueryAllMarca: TFDQuery
+    CachedUpdates = True
+    Left = 56
+    Top = 32
+  end
+  object fdQueryMarca: TFDQuery
+    CachedUpdates = True
+    Left = 56
+    Top = 96
+  end
+  object fdQueryDeleteMarca: TFDQuery
+    Left = 56
+    Top = 160
+  end
+  object sslBin: TFDStanStorageBinLink
+    Left = 184
+    Top = 32
+  end
+  object sslJson: TFDStanStorageJSONLink
+    Left = 184
+    Top = 88
+  end
+end

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/02/27 21:18:48.000.570,=C:\Users\Delphi\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/17 20:32:36.000.724,=C:\Users\Delphi\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2018/04/17 20:33:12.000.882,C:\Users\Delphi\Documents\Embarcadero\Studio\Projects\Unit2.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\Form.App.pas</Transaction>
+    <Transaction>2018/04/17 20:33:12.000.882,C:\Users\Delphi\Documents\Embarcadero\Studio\Projects\Unit2.dfm=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\Form.App.dfm</Transaction>
+    <Transaction>2018/04/17 20:33:42.000.272,C:\Users\Delphi\Documents\Embarcadero\Studio\Projects\Project1.dproj=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\client.dproj</Transaction>
+    <Transaction>2018/04/17 20:36:32.000.412,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/17 20:37:16.000.172,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\Unit2.dfm=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\forms\Form.User.dfm</Transaction>
+    <Transaction>2018/04/17 20:37:16.000.172,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\Unit2.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\forms\Form.User.pas</Transaction>
+    <Transaction>2018/04/17 20:46:23.000.220,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\ClientClassesUnit1.pas</Transaction>
+    <Transaction>2018/04/17 20:46:23.000.392,=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\ClientModuleUnit1.pas</Transaction>
+    <Transaction>2018/04/17 20:47:31.000.270,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\ClientModuleUnit1.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\ClientModule.pas</Transaction>
+    <Transaction>2018/04/17 20:47:31.000.270,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\ClientModuleUnit1.dfm=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\ClientModule.dfm</Transaction>
+    <Transaction>2018/04/17 20:47:40.000.091,\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\ClientClassesUnit1.pas=\\VBOXSVR\WinDelphi\Trabalho 1 bimestre\AppRest\client\ClientClasses.pas</Transaction>
+    <Transaction>2018/04/18 13:48:13.000.022,=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/18 13:49:34.000.270,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.Tecnico.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit2.dfm</Transaction>
+    <Transaction>2018/04/18 13:49:34.000.270,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.Tecnico.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/18 15:35:15.000.755,=E:\Trabalho 1 bimestre\AppRest\client\Unit1.pas</Transaction>
+    <Transaction>2018/04/18 15:35:45.000.817,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsMarca.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit1.dfm</Transaction>
+    <Transaction>2018/04/18 15:35:45.000.817,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsMarca.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit1.pas</Transaction>
+    <Transaction>2018/04/18 15:36:44.000.427,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsMarca.pas=</Transaction>
+    <Transaction>2018/04/20 10:19:07.310,=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/20 10:20:51.546,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.Marca.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/20 10:20:51.546,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.Marca.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit2.dfm</Transaction>
+    <Transaction>2018/04/20 11:02:19.963,=E:\Trabalho 1 bimestre\AppRest\client\Unit1.pas</Transaction>
+    <Transaction>2018/04/20 11:02:59.708,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsServico.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit1.dfm</Transaction>
+    <Transaction>2018/04/20 11:02:59.708,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsServico.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit1.pas</Transaction>
+    <Transaction>2018/04/20 11:03:33.482,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsServico.pas=</Transaction>
+    <Transaction>2018/04/20 11:28:05.579,=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/20 11:29:06.080,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.Servico.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit2.dfm</Transaction>
+    <Transaction>2018/04/20 11:29:06.080,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.Servico.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/20 13:29:59.421,=E:\Trabalho 1 bimestre\AppRest\client\Unit1.pas</Transaction>
+    <Transaction>2018/04/20 13:30:28.213,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsBacen.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit1.pas</Transaction>
+    <Transaction>2018/04/20 13:30:28.213,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsBacen.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit1.dfm</Transaction>
+    <Transaction>2018/04/20 13:30:50.128,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsBacen.pas=</Transaction>
+    <Transaction>2018/04/20 13:44:07.403,=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/20 13:44:43.725,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.Bacen.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit2.dfm</Transaction>
+    <Transaction>2018/04/20 13:44:43.725,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.Bacen.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/20 14:20:53.467,=E:\Trabalho 1 bimestre\AppRest\client\Unit1.pas</Transaction>
+    <Transaction>2018/04/20 14:21:37.196,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsFormaPagamento.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit1.dfm</Transaction>
+    <Transaction>2018/04/20 14:21:37.196,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsFormaPagamento.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit1.pas</Transaction>
+    <Transaction>2018/04/20 14:21:52.894,E:\Trabalho 1 bimestre\AppRest\server\server.methods\ServerMethodsFormaPagamento.pas=</Transaction>
+    <Transaction>2018/04/20 14:34:40.870,=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/20 14:36:27.953,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.FormaPagamento.pas=E:\Trabalho 1 bimestre\AppRest\client\Unit2.pas</Transaction>
+    <Transaction>2018/04/20 14:36:27.953,E:\Trabalho 1 bimestre\AppRest\client\forms\Form.FormaPagamento.dfm=E:\Trabalho 1 bimestre\AppRest\client\Unit2.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

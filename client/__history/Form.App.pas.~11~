@@ -1,0 +1,88 @@
+unit Form.App;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+
+type
+  TfrmApp = class(TForm)
+    mmMenu: TMainMenu;
+    Cadastros1: TMenuItem;
+    Usuario1: TMenuItem;
+    Tecnico1: TMenuItem;
+    Marca1: TMenuItem;
+    procedure Usuario1Click(Sender: TObject);
+    procedure Tecnico1Click(Sender: TObject);
+    procedure Marca1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmApp: TfrmApp;
+
+implementation
+
+uses
+  Form.User, Form.Tecnico, Form.Marca;
+
+{$R *.dfm}
+
+
+procedure TfrmApp.Marca1Click(Sender: TObject);
+begin
+  if not Assigned(frmMarca) then
+  begin
+    Application.CreateForm(TfrmMarca, frmMarca);
+  end;
+
+  with frmMarca do
+  begin
+    try
+      ShowModal;
+    finally
+      FreeAndNil(frmMarca);
+    end;
+  end;
+end;
+
+procedure TfrmApp.Tecnico1Click(Sender: TObject);
+begin
+  if not Assigned(frmTecnico) then
+  begin
+    Application.CreateForm(TfrmTecnico, frmTecnico);
+  end;
+
+  with frmTecnico do
+  begin
+    try
+      ShowModal;
+    finally
+      FreeAndNil(frmTecnico);
+    end;
+  end;
+end;
+
+procedure TfrmApp.Usuario1Click(Sender: TObject);
+begin
+  if not Assigned(frmUser) then
+  begin
+    Application.CreateForm(TfrmUser, frmUser);
+  end;
+
+  with frmUser do
+  begin
+    try
+      ShowModal;
+    finally
+      FreeAndNil(frmUser);
+    end;
+  end;
+
+end;
+
+end.

@@ -1,0 +1,25 @@
+object smFormaPagamento: TsmFormaPagamento
+  OldCreateOrder = False
+  Height = 304
+  Width = 331
+  object fdQueryAllFormaPagamento: TFDQuery
+    Left = 80
+    Top = 48
+  end
+  object fdQueryFormaPagamento: TFDQuery
+    Left = 80
+    Top = 104
+  end
+  object fdQueryDeleteFormaPagamento: TFDQuery
+    Left = 80
+    Top = 168
+  end
+  object sslBin: TFDStanStorageBinLink
+    Left = 232
+    Top = 32
+  end
+  object sslJson: TFDStanStorageJSONLink
+    Left = 272
+    Top = 32
+  end
+end

@@ -1,0 +1,28 @@
+unit ServerMethodsTecnico;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth, Datasnap.DSProviderDataModuleAdapter;
+
+type
+  TsmTecnico = class(TDSServerModule)
+    fdQueryAllTecnico: TFDQuery;
+    sslBin: TFDStanStorageBinLink;
+    sslJson: TFDStanStorageJSONLink;
+    fdQueryTecnico: TFDQuery;
+    fdQueryDeleteTecnico: TFDQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.
+

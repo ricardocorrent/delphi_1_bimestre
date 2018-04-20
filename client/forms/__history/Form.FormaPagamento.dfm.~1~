@@ -1,0 +1,32 @@
+object frmFormaPagamento: TfrmFormaPagamento
+  Left = 0
+  Top = 0
+  Caption = 'Forma de Pagamento'
+  ClientHeight = 274
+  ClientWidth = 643
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pgcFormaPagamento: TPageControl
+    Left = 0
+    Top = 0
+    Width = 643
+    Height = 274
+    ActivePage = tsCadastro
+    Align = alClient
+    TabOrder = 0
+    object tsConsulta: TTabSheet
+      Caption = 'Consulta'
+    end
+    object tsCadastro: TTabSheet
+      Caption = 'Cadastro'
+      ImageIndex = 1
+    end
+  end
+end

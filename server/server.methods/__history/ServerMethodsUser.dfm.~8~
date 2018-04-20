@@ -1,0 +1,57 @@
+object smUser: TsmUser
+  OldCreateOrder = False
+  Height = 258
+  Width = 215
+  object fdQueryAllUser: TFDQuery
+    CachedUpdates = True
+    Connection = dmConnection.fdConnection
+    SQL.Strings = (
+      'SELECT * FROM usuario')
+    Left = 32
+    Top = 8
+  end
+  object fdQueryUser: TFDQuery
+    CachedUpdates = True
+    Connection = dmConnection.fdConnection
+    SQL.Strings = (
+      'SELECT * FROM usuario WHERE id = :ID')
+    Left = 32
+    Top = 64
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftSmallint
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object fdQueryDeleteUser: TFDQuery
+    CachedUpdates = True
+    Connection = dmConnection.fdConnection
+    SQL.Strings = (
+      'DELETE FROM usuario WHERE id = :ID')
+    Left = 32
+    Top = 120
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftSmallint
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object sslBin: TFDStanStorageBinLink
+    Left = 152
+    Top = 24
+  end
+  object sslJson: TFDStanStorageJSONLink
+    Left = 152
+    Top = 72
+  end
+  object fdQueryAccessUser: TFDQuery
+    CachedUpdates = True
+    Connection = dmConnection.fdConnection
+    Left = 32
+    Top = 176
+  end
+end

@@ -1,0 +1,26 @@
+object smTecnico: TsmTecnico
+  OldCreateOrder = False
+  Height = 293
+  Width = 251
+  object fdQueryAllTecnico: TFDQuery
+    CachedUpdates = True
+    Left = 48
+    Top = 24
+  end
+  object sslBin: TFDStanStorageBinLink
+    Left = 160
+    Top = 16
+  end
+  object sslJson: TFDStanStorageJSONLink
+    Left = 160
+    Top = 72
+  end
+  object fdQueryTecnico: TFDQuery
+    Left = 48
+    Top = 80
+  end
+  object fdQueryDeleteTecnico: TFDQuery
+    Left = 48
+    Top = 144
+  end
+end

@@ -1,0 +1,212 @@
+unit Form.Bacen;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.StorageJSON, FireDAC.Stan.StorageBin, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ComCtrls, Vcl.Mask, Vcl.DBCtrls, Data.FireDACJSONReflect, Datasnap.DSClientRest;
+
+type
+  TfrmBacen = class(TForm)
+    pgcBacen: TPageControl;
+    tsConsulta: TTabSheet;
+    tsCadastro: TTabSheet;
+    grdBacen: TDBGrid;
+    btnNew: TButton;
+    fdMemTableBacen: TFDMemTable;
+    dsBacen: TDataSource;
+    sslBin: TFDStanStorageBinLink;
+    sslJson: TFDStanStorageJSONLink;
+    intgrfldMemTableBacenID: TIntegerField;
+    wdstrngfldMemTableBacenDESCRICAO: TWideStringField;
+    wdstrngfldMemTableBacenNUMERO: TWideStringField;
+    lbl1: TLabel;
+    edtId: TDBEdit;
+    lbl2: TLabel;
+    edtDescricao: TDBEdit;
+    lbl3: TLabel;
+    edtNumero: TDBEdit;
+    btnDelete: TButton;
+    btnClean: TButton;
+    btnSave: TButton;
+    procedure btnCleanClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure btnNewClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure grdBacenDblClick(Sender: TObject);
+  private
+    { Private declarations }
+        procedure initialize(AEnabled: Boolean; AFocusIndex, AActivedIndex: Integer);
+
+    procedure GetAllBacen;
+    procedure ApplyUpdate;
+    function DeleteBacen(AId: Integer): Boolean;
+    function GetDeltas: TFDJSONDeltas;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmBacen: TfrmBacen;
+
+implementation
+
+uses ClientModule, System.Generics.Collections, System.JSON;
+
+{$R *.dfm}
+
+procedure HandleRESTException(const AConnection: TDSRestConnection; const APrefix: string; const E: TDSRestProtocolException);
+var
+  LJSONValue: TJSONValue;
+  LMessage: string;
+  LPair: TJSONPair;
+begin
+  // Padronizando mensagem de erro no caso de exceção do servidor
+
+  LJSONValue := TJSONObject.ParseJSONValue(BytesOf(E.ResponseText), 0);
+  try
+    LMessage :=  E.ResponseText;
+
+    if LJSONValue is TJSONObject then
+    begin
+      LPair := TJSONObject(LJSONValue).Get(0);
+      if LPair.JsonString.Value = 'SessionExpired' then
+      begin
+          AConnection.SessionID := '';
+      end;
+
+      LMessage := LPair.JSONValue.Value;
+    end
+  finally
+    LJSONValue.Free;
+  end;
+
+  ShowMessageFmt('%s: %s', [APrefix, LMessage]);
+end;
+
+{ TfrmBacen }
+
+procedure TfrmBacen.ApplyUpdate;
+var
+  LDeltaList: TFDJSONDeltas;
+begin
+  LDeltaList := GetDeltas;
+  try
+    ClientModule.smRestConnection.smBacenClient.ApplyChangesBacen(LDeltaList);
+    GetAllBacen;
+  except
+    on E: TDSRestProtocolException do
+      HandleRestException(ClientModule.smRestConnection.DSRestConnection1, 'Apply Updates error', E)
+    else
+      raise;
+  end;
+end;
+
+procedure TfrmBacen.btnCleanClick(Sender: TObject);
+begin
+  edtDescricao.SetFocus;
+  edtNumero.SetFocus;
+  fdMemTableBacen.Insert;
+end;
+
+procedure TfrmBacen.btnDeleteClick(Sender: TObject);
+var
+  Msg: string;
+  Id: Integer;
+begin
+  Id := StrToInt(edtId.Field.Text);
+
+  Msg := Format('Deseja remover o registro atual, %d?', [id]);
+
+  if MessageDlg(Msg, mtConfirmation, [mbYes, mbNo], 0, mbYes) = mrYes then
+  begin
+    if DeleteBacen(Id) then
+    begin
+      fdMemTableBacen.Delete;
+      initialize(False, 1, 0);
+      Exit;
+    end;
+  end;
+end;
+
+procedure TfrmBacen.btnNewClick(Sender: TObject);
+begin
+  initialize(True, 1, 1);
+  fdMemTableBacen.Insert;
+end;
+
+procedure TfrmBacen.btnSaveClick(Sender: TObject);
+begin
+  ApplyUpdate;
+  initialize(False, 1, 0);
+end;
+
+function TfrmBacen.DeleteBacen(AId: Integer): Boolean;
+begin
+    try
+    ClientModule.smRestConnection.smBacenClient.DeleteBacen(AId);
+    Result := True;
+  except
+    on E: TDSRestProtocolException do
+      HandleRestException(ClientModule.smRestConnection.DSRestConnection1, 'Delete error', E)
+    else
+      Result := False;
+  end
+end;
+
+procedure TfrmBacen.FormCreate(Sender: TObject);
+begin
+  initialize(False, 1, 0);
+end;
+
+procedure TfrmBacen.FormShow(Sender: TObject);
+begin
+  GetAllBacen;
+end;
+
+procedure TfrmBacen.GetAllBacen;
+var
+  LDataSetList: TFDJSONDataSets;
+begin
+  try
+    LDataSetList := ClientModule.smRestConnection.smBacenClient.GetAllBacen;
+    fdMemTableBacen.Active := False;
+    Assert(TFDJSONDataSetsReader.GetListCount(LDataSetList) = 1);
+    fdMemTableBacen.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));
+    fdMemTableBacen.Active := True;
+  except
+    on E: TDSRestProtocolException do
+      HandleRestException(ClientModule.smRestConnection.DSRestConnection1, 'Get Bacen error', E)
+    else
+      raise;
+  end;
+end;
+
+function TfrmBacen.GetDeltas: TFDJSONDeltas;
+begin
+  if fdMemTableBacen.State in dsEditModes then
+  begin
+    fdMemTableBacen.Post;
+  end;
+  Result := TFDJSONDeltas.Create;
+  TFDJSONDeltasWriter.ListAdd(Result, 'bacen', fdMemTableBacen);
+end;
+
+procedure TfrmBacen.grdBacenDblClick(Sender: TObject);
+begin
+  initialize(True, 1, 1);
+end;
+
+procedure TfrmBacen.initialize(AEnabled: Boolean; AFocusIndex,
+  AActivedIndex: Integer);
+begin
+
+end;
+
+end.

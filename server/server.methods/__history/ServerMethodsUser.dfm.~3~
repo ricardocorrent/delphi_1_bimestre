@@ -1,0 +1,17 @@
+object smUser: TsmUser
+  OldCreateOrder = False
+  Height = 189
+  Width = 215
+  object fdQueryAllUser: TFDQuery
+    Left = 32
+    Top = 8
+  end
+  object fdQueryUser: TFDQuery
+    Left = 32
+    Top = 64
+  end
+  object fdQueryDeleteUser: TFDQuery
+    Left = 32
+    Top = 120
+  end
+end

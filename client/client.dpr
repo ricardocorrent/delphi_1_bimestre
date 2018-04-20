@@ -1,0 +1,29 @@
+program client;
+
+uses
+  Vcl.Forms,
+  Form.App in 'Form.App.pas' {frmApp},
+  Form.User in 'forms\Form.User.pas' {frmUser},
+  ClientClasses in 'ClientClasses.pas',
+  ClientModule in 'ClientModule.pas' {smRestConnection: TDataModule},
+  Form.Tecnico in 'forms\Form.Tecnico.pas' {frmTecnico},
+  Form.Marca in 'forms\Form.Marca.pas' {frmMarca},
+  Form.Servico in 'forms\Form.Servico.pas' {frmServico},
+  Form.Bacen in 'forms\Form.Bacen.pas' {frmBacen},
+  Form.FormaPagamento in 'forms\Form.FormaPagamento.pas' {frmFormaPagamento};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmApp, frmApp);
+  Application.CreateForm(TfrmUser, frmUser);
+  Application.CreateForm(TsmRestConnection, smRestConnection);
+  Application.CreateForm(TfrmTecnico, frmTecnico);
+  Application.CreateForm(TfrmMarca, frmMarca);
+  Application.CreateForm(TfrmServico, frmServico);
+  Application.CreateForm(TfrmBacen, frmBacen);
+  Application.CreateForm(TfrmFormaPagamento, frmFormaPagamento);
+  Application.Run;
+end.

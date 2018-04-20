@@ -1,0 +1,19 @@
+program client;
+
+uses
+  Vcl.Forms,
+  Form.App in 'Form.App.pas' {frmApp},
+  Form.User in 'forms\Form.User.pas' {frmUser},
+  ClientClasses in 'ClientClasses.pas',
+  ClientModule in 'ClientModule.pas' {smRestConnection: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmApp, frmApp);
+  Application.CreateForm(TfrmUser, frmUser);
+  Application.CreateForm(TsmRestConnection, smRestConnection);
+  Application.Run;
+end.

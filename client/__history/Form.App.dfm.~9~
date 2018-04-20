@@ -1,0 +1,37 @@
+object frmApp: TfrmApp
+  Left = 0
+  Top = 0
+  Align = alClient
+  Caption = 'Ordem de servi'#231'o'
+  ClientHeight = 274
+  ClientWidth = 643
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = mmMenu
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object mmMenu: TMainMenu
+    Left = 88
+    Top = 48
+    object Cadastros1: TMenuItem
+      Caption = '&Cadastros'
+      object Usuario1: TMenuItem
+        Caption = '&Usu'#225'rio'
+        OnClick = Usuario1Click
+      end
+      object Tecnico1: TMenuItem
+        Caption = '&T'#233'cnico'
+        OnClick = Tecnico1Click
+      end
+      object Marca1: TMenuItem
+        Caption = 'Marca'
+        OnClick = Marca1Click
+      end
+    end
+  end
+end
